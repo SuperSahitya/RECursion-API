@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const { getAlumni } = require("../controllers/alumniController");
 
-router.get("/", async (req, res) => {
+router.get("/:year", async (req, res) => {
   try {
-    const data = await getAlumni();
+    const year = parseInt(req.params.year);
+    const data = await getAlumni(year);
     res.send(data);
     // console.log(data);
   } catch (error) {
