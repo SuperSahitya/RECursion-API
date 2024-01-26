@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { getData } = require("../controllers/memberController");
+const { getAlumni } = require("../controllers/alumniController");
 
-router.get("/:year", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const year = parseInt(req.params.year, 10);
-    const data = await getData(year);
+    const data = await getAlumni();
     res.send(data);
     // console.log(data);
   } catch (error) {
